@@ -1,6 +1,6 @@
 import { SEND_MESSAGE, SEND_FILE, SEND_IMAGE } from "../constants/action-constants";
 
-export const send = (message = {}, action) => {
+export const sendReducer = (message = {}, action) => {
     switch(action.type) {
         case SEND_MESSAGE:
             return {
@@ -19,3 +19,5 @@ export const send = (message = {}, action) => {
             return message;
     }
 }
+
+export default sendReducer;

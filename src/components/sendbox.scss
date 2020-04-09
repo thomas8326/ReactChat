@@ -1,0 +1,22 @@
+.messageBox {
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    flex: 1;
+
+    .send {
+        flex: 1;
+        padding: 10px;
+    }
+
+    .uploadImage, .enter {
+        flex: 0 0 30px;
+        height: 30px;
+    }
+}
+
+.sender {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
