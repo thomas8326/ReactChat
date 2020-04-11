@@ -2,16 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './sendbox.scss';
 
-export const sendbox = ({ active, children, onClick }) => {
+export const sendbox = ({ onSendClick }) => {
+    let message = '';
+
     return (
-        <div class="sender">
-            <button class="uploadImage"></button>
-            <div class="messageBox">
-                <div contentEditable="true" class="send"></div>
+        <div className="sender">
+            <button className="uploadImage"></button>
+            <div className="messageBox">
+                <div 
+                    contentEditable="true" 
+                    className="send" 
+                    ref={e => message = e }
+                ></div>
                 <button
-                    class="enter"
-                    onClick={() => onClick()}
-                    onKeyUp={(e) => { if (e.keyCode === 13) onClick() }}
+                    className="enter"
+                    onClick={() => {
+                        onSendClick(message.innerText);
+                        message.innerText = '';
+                    }}
                 >></button>
             </div>
         </div>
@@ -19,7 +27,7 @@ export const sendbox = ({ active, children, onClick }) => {
 }
 
 sendbox.propTypes = {
-    onClick: PropTypes.func.isRequired
+    onSendClick: PropTypes.func.isRequired
 }
 
 export default sendbox;
