@@ -1,12 +1,10 @@
 import { Message } from "./message";
 import React from 'react'
 
-export const MessageList = (state) => (
-    <div>
-        {console.log(state)}
+export const MessageList = ({messages}) => (
+    <div class="messageList">
         {
-            
-            state.messages.map(message => 
+            messages.map(message => 
                 <Message 
                     key={message.messageId}
                     {...message}
