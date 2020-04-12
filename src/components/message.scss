@@ -1,3 +1,15 @@
 .isMine {
-    text-align: right;
+    justify-content: flex-end;
+}
+
+.messagebox {
+    display: flex;
+}
+
+.message {
+    padding: 10px;
+    width: auto;
+    background-color: #f1f0f0;
+    border-radius: 30%;
+    margin: 10px 0px;
 }
