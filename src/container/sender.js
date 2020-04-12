@@ -2,12 +2,18 @@ import { connect } from "react-redux";
 import sendbox from "../components/sendbox";
 import { sendMessage } from "../actions/send-action";
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
     return {
-        onSendClick: (message) => dispatch(sendMessage('MINE', message))
+        user: state.user
     }
 }
 
-const Sender = connect(null, mapDispatchToProps)(sendbox);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onSendClick: (user, message) => dispatch(sendMessage(user.userId, message))
+    }
+}
+
+const Sender = connect(mapStateToProps, mapDispatchToProps)(sendbox);
 
 export default Sender;

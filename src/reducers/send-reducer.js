@@ -17,7 +17,6 @@ const fileMessage = (action) => {
 }
 
 export const messages = (lastMessageState = [], action) => {
-    console.log(action);
     switch (action.type) {
         case SEND_MESSAGE:
             return [
