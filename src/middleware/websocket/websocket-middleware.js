@@ -1,5 +1,5 @@
 import { wsConnect, wsDisconnect } from "../../actions/websocket-action"
-import { sendMessage } from "../../actions/send-action";
+import { sendMessage, receiveMessage } from "../../actions/send-action";
 
 export const websocketMiddleware = (store) => {
     let socket = null;
@@ -8,20 +8,20 @@ export const websocketMiddleware = (store) => {
 
         switch(action.type) {
             case 'WS_CONNECT':
+                console.log(action);
+
                 if (socket !== null) {
                     socket.close();
                 }
                 
-                socket = new WebSocket('ws://127.0.0.1:8080/');
-
-                socket.onopen = (event) => {
-                    console.log('open')
-                    console.log(event);
-                };
+                console.log(action.room);
+                socket = new WebSocket('ws://localhost:8090');
+                socket.onopen = (event) => {};
                 socket.onmessage = (event) => {
-                    console.log('getMessage')
-                    console.log(event)};
-                // socket.onclose = store.dispatch(wsDisconnect());
+                    console.log(event);
+                    store.dispatch(receiveMessage(event.data));
+                    // socket.onclose = store.dispatch(wsDisconnect());
+                }
                 break;
             case 'WS_DISCONNECT':
                 if (socket !== null) {
@@ -30,7 +30,12 @@ export const websocketMiddleware = (store) => {
                 socket = null;
                 break;
             case 'SEND_MESSAGE':
-                socket.send(action.message);
+                const message  = {
+                    "message": action.message,
+                    "roomId": action.roomId,
+                    "messageId": action.messageId,
+                }
+                socket.send(JSON.stringify(message));
                 break;
             default:
                 return next(action);

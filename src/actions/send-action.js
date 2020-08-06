@@ -1,9 +1,17 @@
-import { SEND_MESSAGE, SEND_FILE, SEND_IMAGE } from "../constants/action-constants"
-import { v4 as uuidv4 } from 'uuid'; 
+import { SEND_MESSAGE, SEND_FILE, SEND_IMAGE, RECEIVED_MESSAGE } from "../constants/action-constants"
+import { v4 as uuidv4 } from 'uuid';
 
-export const sendMessage = (userId, text) => {
+export const receiveMessage = (text) => {
+    return {
+        message: text,
+        type: RECEIVED_MESSAGE
+    }
+}
+
+export const sendMessage = (userId, text, roomId) => {
         return {
             userId: userId,
+            roomId: roomId,
             messageId: uuidv4(),
             type: SEND_MESSAGE,
             message: text

@@ -1,21 +1,22 @@
 import React from 'react';
 import './App.css';
-import Sender from './container/sender';
-import Conversation from './container/conversation';
-import { User } from './container/user';
 import Rooms from './container/room';
+import { wsConnect } from "./actions/websocket-action";
+import { connect } from "react-redux";
 
-const App = () => {
-  return (
-    <div className="chat">
-      <Rooms className="room"></Rooms>
-      <div className="conversation">
-        <Conversation></Conversation>
-        <Sender></Sender>
-        <User></User>
-      </div>
-  </div>
-  )
+class AppContainer extends React.Component {
+
+  componentDidMount() {
+    this.props.dispatch(wsConnect());
+  }
+
+  render(){
+    return (
+        <Rooms className="room"></Rooms>
+      )
+    }
 }
+
+const App = connect()(AppContainer);
 
 export default App;

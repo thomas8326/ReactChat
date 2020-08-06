@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './sendbox.scss';
 
-export const sendbox = ({ onSendClick, user }) => {
+export const sendbox = ({ onSendClick, user, roomId }) => {
     let message = '';
 
     return (
@@ -17,7 +17,7 @@ export const sendbox = ({ onSendClick, user }) => {
                 <button
                     className="enter"
                     onClick={() => {
-                        onSendClick(user, message.innerText);
+                        onSendClick(user, message.innerText, roomId);
                         message.innerText = '';
                     }}
                 >></button>

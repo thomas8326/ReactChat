@@ -6,12 +6,6 @@ import './messageList.scss';
 
 
 class MessageList extends React.Component {
-
-    componentDidMount() {
-        console.log('on');
-        this.props.dispatch(wsConnect());
-    }
-
     render() {
         return (
             <div className="messageList">
@@ -32,7 +26,7 @@ class MessageList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        messages: state.messages
+        messages: state.messages,
     }
 }
 

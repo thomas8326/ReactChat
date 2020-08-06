@@ -1,0 +1,1 @@
+export const OPEN_ROOM_ID = 'OPEN_ROOM_ID';

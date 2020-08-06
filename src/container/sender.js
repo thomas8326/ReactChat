@@ -4,13 +4,14 @@ import { sendMessage } from "../actions/send-action";
 
 const mapStateToProps = (state) => {
     return {
-        user: state.user
+        user: state.user,
+        roomId: state.room.roomId
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSendClick: (user, message) => dispatch(sendMessage(user.userId, message))
+        onSendClick: (user, message, roomId) => dispatch(sendMessage(user.userId, message, roomId))
     }
 }
 

@@ -1,4 +1,4 @@
-import { SEND_MESSAGE, SEND_FILE, SEND_IMAGE } from "../constants/action-constants";
+import { SEND_MESSAGE, SEND_FILE, SEND_IMAGE, RECEIVED_MESSAGE } from "../constants/action-constants";
 
 const textMessage = (action) => {
     return {
@@ -18,6 +18,12 @@ const fileMessage = (action) => {
 
 export const messages = (lastMessageState = [], action) => {
     switch (action.type) {
+        case RECEIVED_MESSAGE:
+            console.log('In');
+            return [
+                ...lastMessageState,
+                textMessage(action)
+            ];        
         case SEND_MESSAGE:
             return [
                 ...lastMessageState,
