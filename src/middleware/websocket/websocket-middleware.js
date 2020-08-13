@@ -31,9 +31,9 @@ export const websocketMiddleware = (store) => {
                 break;
             case 'SEND_MESSAGE':
                 const message  = {
-                    "message": action.message,
+                    "content": action.message,
                     "roomId": action.roomId,
-                    "messageId": action.messageId,
+                    "senderMsgId": action.messageId,
                 }
                 socket.send(JSON.stringify(message));
                 break;

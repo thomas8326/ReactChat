@@ -6,8 +6,9 @@ import { connect } from "react-redux";
 
 class AppContainer extends React.Component {
 
-  componentDidMount() {
-    this.props.dispatch(wsConnect());
+  constructor(props) {
+    super(props);
+    props.dispatch(wsConnect());
   }
 
   render(){

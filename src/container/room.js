@@ -13,6 +13,11 @@ class Room extends React.Component {
         this.state = { 
             rooms: ['room1', 'room2', 'room3'],
         }
+        this.openRoom = this.openRoom().apply();
+    }
+
+    componentDidMount() {
+        openRoom('room1');
     }
 
     openRoom(roomId) {
