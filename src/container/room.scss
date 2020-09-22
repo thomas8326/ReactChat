@@ -1,15 +1,17 @@
 .room-container {
     display: flex;
+    height: 100%;
 }
 
 .room-list {
     flex: 0 0 300px;
+
     .room {
         width: 100%;
         height: 50px;
         box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 
-        & + & {
+        &+& {
             margin-top: 3px;
         }
     }
@@ -17,4 +19,23 @@
 
 .conversation {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    .messageList {
+        flex: 1;
+    }
+
+    .sender {
+        flex: 0 0 40px;
+    }
+}
+
+.empty {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #80808052;
 }
