@@ -19,11 +19,10 @@ const fileMessage = (action) => {
 export const messages = (lastMessageState = [], action) => {
     switch (action.type) {
         case RECEIVED_MESSAGE:
-            console.log('In');
             return [
                 ...lastMessageState,
                 textMessage(action)
-            ];        
+            ];
         case SEND_MESSAGE:
             return [
                 ...lastMessageState,

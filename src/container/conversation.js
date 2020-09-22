@@ -10,9 +10,9 @@ class MessageList extends React.Component {
         return (
             <div className="messageList">
                 {
-                    this.props.messages.map(message => 
-                        <Message 
-                            key={message.messageId}
+                    this.props.messages.map((message, index) =>
+                        <Message
+                            key={index}
                             {...message}
                         >
                         </Message>

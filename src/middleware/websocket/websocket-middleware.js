@@ -20,6 +20,8 @@ export const websocketMiddleware = (store) => {
                 }
                 break;
             case 'WS_DISCONNECT':
+
+                console.log(socket);
                 if (socket !== null) {
                     socket.close();
                 }
