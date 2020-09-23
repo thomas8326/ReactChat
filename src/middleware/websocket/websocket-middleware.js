@@ -12,7 +12,7 @@ export const websocketMiddleware = (store) => {
                     socket.close();
                 }
 
-                socket = new WebSocket('ws://192.168.50.199:8090');
+                socket = new WebSocket('ws://localhost:8090');
                 socket.onopen = (event) => { };
                 socket.onmessage = (event) => {
                     store.dispatch(receiveMessage(event.data));
